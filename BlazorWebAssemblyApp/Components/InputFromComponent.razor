@@ -1,0 +1,19 @@
+﻿@using BlazorWebAssemblyApp.Models;
+
+<EditForm Model="@Data" OnValidSubmit="@SubmitForm">
+    <DataAnnotationsValidator/>
+    <InputText @bind-Value="Data.ID"></InputText>
+    <InputNumber @bind-Value="Data.Quantity"></InputNumber>
+    <button type="submit">Submit</button>
+    <ValidationSummary />
+</EditForm>
+
+@code {
+    [Parameter]
+    public FormData Data { get; set; } = new FormData();
+
+    private void SubmitForm()
+    {
+        
+    }
+}
