@@ -1,4 +1,6 @@
 ﻿@using BlazorWebAssemblyApp.Models;
+@using Blazor.AppLogic.Services;
+@inject ICalculatorService CalculatorService;
 
 <EditForm Model="@Data" OnValidSubmit="@SubmitForm">
     <DataAnnotationsValidator/>
@@ -8,12 +10,22 @@
     <ValidationSummary />
 </EditForm>
 
+@if(Result != null && Result != "")
+{
+    <div class="mt-3">
+        <h4>Result:</h4>
+        @Result;
+    </div>
+}
+
 @code {
     [Parameter]
     public FormData Data { get; set; } = new FormData();
 
+    private string  Result { get; set; }
+
     private void SubmitForm()
     {
-        
+        Result = CalculatorService.Calculate();
     }
 }

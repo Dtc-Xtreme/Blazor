@@ -5,11 +5,13 @@ VisualStudioVersion = 17.5.33530.505
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorWebAssemblyApp", "BlazorWebAssemblyApp\BlazorWebAssemblyApp.csproj", "{496B9AF4-F058-4280-8652-7494AA7316A4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Blazor.AppLogic", "Blazor.AppLogic\Blazor.AppLogic.csproj", "{ED2C2A5C-047A-4E07-94C0-3826CB195532}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Blazor.AppLogic", "Blazor.AppLogic\Blazor.AppLogic.csproj", "{ED2C2A5C-047A-4E07-94C0-3826CB195532}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorServerApp", "BlazorServerApp\BlazorServerApp.csproj", "{66E16CF6-C03B-436E-B637-CE6C57146309}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorServerApp", "BlazorServerApp\BlazorServerApp.csproj", "{66E16CF6-C03B-436E-B637-CE6C57146309}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BlazorMauiApp", "BlazorMauiApp\BlazorMauiApp.csproj", "{4133075E-B17C-4248-ABF2-6C06F7CBB849}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "BlazorMauiApp", "BlazorMauiApp\BlazorMauiApp.csproj", "{4133075E-B17C-4248-ABF2-6C06F7CBB849}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ASP.MVC", "ASP.MVC\ASP.MVC.csproj", "{37EA5F71-8375-41B6-9C2C-8FD2F967C36B}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -35,6 +37,10 @@ Global
 		{4133075E-B17C-4248-ABF2-6C06F7CBB849}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{4133075E-B17C-4248-ABF2-6C06F7CBB849}.Release|Any CPU.Build.0 = Release|Any CPU
 		{4133075E-B17C-4248-ABF2-6C06F7CBB849}.Release|Any CPU.Deploy.0 = Release|Any CPU
+		{37EA5F71-8375-41B6-9C2C-8FD2F967C36B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37EA5F71-8375-41B6-9C2C-8FD2F967C36B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37EA5F71-8375-41B6-9C2C-8FD2F967C36B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37EA5F71-8375-41B6-9C2C-8FD2F967C36B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
