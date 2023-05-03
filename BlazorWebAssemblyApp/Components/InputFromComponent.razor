@@ -2,97 +2,96 @@
 @using Domain.Models;
 @inject ICalculatorService CalculatorService;
 
-<EditForm Model="@Data" OnValidSubmit="@SubmitForm" class="row">
+<EditForm Model="@Data" OnValidSubmit="@SubmitForm" class="w-100">
     <ObjectGraphDataAnnotationsValidator />
-
-    <div class="col-4">
-        <h5>Saw</h5>
-        <div>
-            <label for="">ID:</label>
-            <InputText @bind-Value="Data.Saw.ID" placeholder="ID"></InputText>
+    <button class="btn btn-secondary w-100 mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#sawForm" aria-expanded="false" aria-controls="sawForm">Saw</button>
+    <div id="sawForm" class="row collapse show p-3">
+        <div class="col-lg-6">
+            <label class="form-label" for="">ID</label>
+            <InputText class="form-control" @bind-Value="Data.Saw.ID" placeholder="ID"></InputText>
             <ValidationMessage For="() => Data.Saw.ID" />
         </div>
-        <div>
-            <label for="">Thickness:</label>
-            <InputNumber @bind-Value="Data.Saw.Thickness" placeholder="Thickness"></InputNumber>
+        <div class="col-lg-6">
+            <label class="form-label" for="">Thickness</label>
+            <InputNumber class="form-control" @bind-Value="Data.Saw.Thickness" placeholder="Thickness"></InputNumber>
             <ValidationMessage For="() => Data.Saw.Thickness" />
         </div>
     </div>
 
-    <div class="col-4">
-        <h5>Plate</h5>
-        <div>
-            <label for="">Quantity:</label>
-            <InputNumber @bind-Value="Data.Plate.Quantity" placeholder="Quantity"></InputNumber>
+    <button class="btn btn-secondary w-100 mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#plateForm" aria-expanded="false" aria-controls="plateForm">Plate</button>
+    <div id="plateForm" class="row collapse show p-4">
+        <div class="col-lg-1">
+            <label class="form-label" for="">Quantity</label>
+            <InputNumber class="form-control" @bind-Value="Data.Plate.Quantity" placeholder="Quantity"></InputNumber>
             <ValidationMessage For="() => Data.Plate.Quantity" />
         </div>
-        <div>
-            <label for="">ID:</label>
-            <InputText @bind-Value="Data.Plate.ID" placeholder="ID"></InputText>
+        <div class="col-lg-1">
+            <label class="form-label" for="">ID</label>
+            <InputText class="form-control" @bind-Value="Data.Plate.ID" placeholder="ID"></InputText>
             <ValidationMessage For="() => Data.Plate.ID" />
         </div>
-        <div>
-            <label for="">Length:</label>
-            <InputNumber @bind-Value="Data.Plate.Length" placeholder="Length"></InputNumber>
+        <div class="col-lg-2">
+            <label class="form-label" for="">Length</label>
+            <InputNumber class="form-control" @bind-Value="Data.Plate.Length" placeholder="Length"></InputNumber>
             <ValidationMessage For="() => Data.Plate.Length" />
         </div>
-        <div>
-            <label for="">Width:</label>
-            <InputNumber @bind-Value="Data.Plate.Width" placeholder="Width"></InputNumber>
+        <div class="col-2">
+            <label class="form-label" for="">Width</label>
+            <InputNumber class="form-control"  @bind-Value="Data.Plate.Width" placeholder="Width"></InputNumber>
             <ValidationMessage For="() => Data.Plate.Width" />
         </div>
-        <div>
-            <label for="">Thickness:</label>
-            <InputNumber @bind-Value="Data.Plate.Thickness" placeholder="Thickness"></InputNumber>
+        <div class="col-1">
+            <label class="form-label" for="">Thickness</label>
+            <InputNumber class="form-control" @bind-Value="Data.Plate.Thickness" placeholder="Thickness"></InputNumber>
             <ValidationMessage For="() => Data.Plate.Thickness" />
         </div>
-        <div>
-            <label for="">Trim:</label>
-            <InputNumber @bind-Value="Data.Plate.Trim" placeholder="Trim"></InputNumber>
+        <div class="col-1">
+            <label class="form-label" for="">Trim</label>
+            <InputNumber class="form-control" @bind-Value="Data.Plate.Trim" placeholder="Trim"></InputNumber>
             <ValidationMessage For="() => Data.Plate.Trim" />
         </div>
-        <div>
-            <label for="">Base:</label>
-            <InputCheckbox @bind-Value="Data.Plate.Base" placeholder="Base"></InputCheckbox>
+        <div class="col-1 form-check ">
+            <label class="form-label" for="baseId">Base</label>
+            <InputCheckbox id="baseId" class="form-check" @bind-Value="Data.Plate.Base" placeholder="Base"></InputCheckbox>
             <ValidationMessage For="() => Data.Plate.Base" />
         </div>
-        <div>
-            <label for="">Veneer:</label>
-            <InputCheckbox @bind-Value="Data.Plate.Veneer" placeholder="Veneer"></InputCheckbox>
-            <ValidationMessage For="() => Data.Plate.Veneer"/>
+        <div class="col-1 form-check">
+            <label class="form-label" for="veneerId">Veneer</label>
+            <InputCheckbox id="veneerId" class="form-check" @bind-Value="Data.Plate.Veneer" placeholder="Veneer"></InputCheckbox>
+            <ValidationMessage For="() => Data.Plate.Veneer" />
         </div>
     </div>
 
-    <div class="col-4">
-        <h5>Product</h5>
-        <div>
-            <label for="">Quantity:</label>
-            <InputNumber @bind-Value="Data.Product.Quantity" placeholder="Quantity"></InputNumber>
+    <button class="btn btn-secondary w-100 mb-2" type="button" data-bs-toggle="collapse" data-bs-target="#productForm" aria-expanded="false" aria-controls="productForm">Product</button>
+    <div id="productForm" class="row collapse show p-4">
+        <div class="col-1">
+            <label class="form-label" for="">Quantity</label>
+            <InputNumber class="form-control" @bind-Value="Data.Product.Quantity" placeholder="Quantity"></InputNumber>
             <ValidationMessage For="() => Data.Product.Quantity" />
         </div>
-        <div>
-            <label for="">ID:</label>
-            <InputText @bind-Value="Data.Product.ID" placeholder="ID"></InputText>
+        <div class="col-1">
+            <label class="form-label" for="">ID</label>
+            <InputText class="form-control"  @bind-Value="Data.Product.ID" placeholder="ID"></InputText>
             <ValidationMessage For="() => Data.Product.ID" />
         </div>
-        <div>
-            <label for="">Length:</label>
-            <InputNumber @bind-Value="Data.Product.Length" placeholder="Length"></InputNumber>
+        <div class="col-2">
+            <label class="form-label" for="">Length</label>
+            <InputNumber class="form-control" @bind-Value="Data.Product.Length" placeholder="Length"></InputNumber>
             <ValidationMessage For="() => Data.Product.Length" />
         </div>
-        <div>
-            <label for="">Width:</label>
-            <InputNumber @bind-Value="Data.Product.Width" placeholder="Width"></InputNumber>
+        <div class="col-2">
+            <label class="form-label" for="">Width</label>
+            <InputNumber class="form-control" @bind-Value="Data.Product.Width" placeholder="Width"></InputNumber>
             <ValidationMessage For="() => Data.Product.Width" />
         </div>
-        <div>
-            <label for="">Thickness:</label>
-            <InputNumber @bind-Value="Data.Product.Thickness" placeholder="Thickness"></InputNumber>
+        <div class="col-1">
+            <label class="form-label" for="">Thickness</label>
+            <InputNumber class="form-control" @bind-Value="Data.Product.Thickness" placeholder="Thickness"></InputNumber>
             <ValidationMessage For="() => Data.Product.Thickness" />
         </div>
     </div>
     
-    <button class="btn btn-primary" type="submit">Submit</button>
+    <button class="btn btn-primary w-100 mb-2" type="submit">Submit</button>
 
 </EditForm>
 
@@ -114,8 +113,15 @@
 
     private string  Result { get; set; }
 
+    private string SawClass { get; set; } = "col-4 ";
+
     private void SubmitForm()
     {
         Result = CalculatorService.Calculate();
+    }
+
+    private void Toggle()
+    {
+        
     }
 }
