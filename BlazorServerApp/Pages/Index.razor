@@ -1,6 +1,9 @@
 ﻿@page "/"
+@using AppLogic.Services;
 @using BlazorServerApp.Components
+
 @inject NavigationManager Navigation
+@inject ITestService TestService
 
 <PageTitle>Home</PageTitle>
 
@@ -27,6 +30,7 @@ Welcome to your new app.
     private Task PrintText(string value)
     {
         Errors.Add(value);
+        TestService.TestFunction();
         return Task.CompletedTask;
     }
 }
