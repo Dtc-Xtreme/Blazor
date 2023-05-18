@@ -1,0 +1,9 @@
+﻿<div class="card bg-dark m-3 p-3 text-light">
+    <h3>PassFunctionComponent</h3>
+    <button class="btn btn-primary" type="button" @onclick="Nav">Navigeer naar Counter</button>
+</div>
+
+@code {
+    [Parameter]
+    public Action Nav { get; set; }
+}

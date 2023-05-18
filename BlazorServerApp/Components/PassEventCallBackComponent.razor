@@ -1,0 +1,14 @@
+﻿<div class="card bg-dark m-3 p-3 text-light">
+    <h3>PassEventCallComponent</h3>
+    <button class="btn btn-primary" type="button" @onclick="ClickButton">Start callback</button>
+</div>
+
+@code {
+    [Parameter]
+    public EventCallback<string> ConsoleEventCallBack { get; set; }
+
+    private void ClickButton()
+    {
+        ConsoleEventCallBack.InvokeAsync("Knop gedrukt van PassEventCallComponent!");
+    }
+}
