@@ -5,6 +5,8 @@
 @inject NavigationManager Navigation
 @inject ITestService TestService
 
+@inject IJSRuntime JSRuntime;
+
 <PageTitle>Home</PageTitle>
 
 <h1>Hello, world!</h1>
@@ -19,6 +21,12 @@ Welcome to your new app.
 
 <PassEventCallBackComponent ConsoleEventCallBack="@PrintText" />
 
+<div>
+    <button class="btn btn-warning" type="button" @onclick="CallJsAlert">Call JS Alert from C#</button>
+    <button class="btn btn-warning" type="button" onclick="returnStringAsync()">Call C# from JS</button>
+</div>
+
+
 @code{
     private List<string> Errors { get; set; } = new List<string> { "Click 1", "Click 2" };
 
@@ -32,5 +40,16 @@ Welcome to your new app.
         Errors.Add(value);
         TestService.TestFunction();
         return Task.CompletedTask;
+    }
+
+    private async void CallJsAlert()
+    {
+        await JSRuntime.InvokeAsync<object>("Alert", "Tekst van de alert");
+    }
+
+    [JSInvokable]
+    public static Task<string> ReturnString()
+    {
+        return Task.FromResult("test");
     }
 }
