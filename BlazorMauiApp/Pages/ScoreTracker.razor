@@ -1,0 +1,83 @@
+﻿@page "/score_tracker"
+@using BlazorMauiApp.Models;
+<PageTitle>ScoreTracker</PageTitle>
+
+<div class="row text-center">
+    <h1>Score Tracker</h1>
+</div>
+
+<div class="row text-center mt-3">
+    <div class="col-6 m-auto">
+        <h3>Home</h3>
+        <button class="btn btn-primary" @onclick="() => IncrementCount(ref HomeScore)">+</button>
+        <div class="m-2">@HomeScore</div>
+        <button class="btn btn-primary" @onclick="() => DecreaseCount(ref HomeScore)">-</button>
+    </div>
+
+    <div class="col-6 m-auto">
+        <h3>Visitor</h3>
+        <button class="btn btn-primary" @onclick="() => IncrementCount(ref VisitorScore)">+</button>
+        <div class="m-2">@VisitorScore</div>
+        <button class="btn btn-primary" @onclick="() => DecreaseCount(ref VisitorScore)">-</button>
+    </div>
+</div>
+
+<div class="row text-center my-4">
+    <div class="col-12">
+        <button class="btn btn-secondary" @onclick="Save" disabled="@(HomeScore == 13 || VisitorScore == 13 ? false : true)">Save</button>
+        <button class="btn btn-warning mx-2" @onclick="ClearScore">Clear Score</button>
+        <button class="btn btn-danger" @onclick="ClearResult">Clear Result</button>
+    </div>
+</div>
+
+<div class="row text-center">
+    @if(Scores != null && Scores.Count > 0)
+    {
+        <div class="col-12">
+            @TotalScore()
+        </div>
+    }
+
+    <div class="col-12">
+        @foreach(Score sc in Scores)
+        {
+            <div class="fw-bold">@sc.ToString()</div>
+        }
+    </div>
+</div>
+
+@code {
+    private int HomeScore = 0;
+    private int VisitorScore = 0;
+    private List<Score> Scores = new List<Score>();
+
+    private void IncrementCount(ref int counter)
+    {
+        if(counter < 13) counter++;
+    }
+    private void DecreaseCount(ref int counter)
+    {
+        if(counter > 0) counter--;
+    }
+
+    private void Save()
+    {
+        Scores.Add(new Score(HomeScore, VisitorScore));
+        ClearScore();
+    }
+    private void ClearScore()
+    {
+        HomeScore = 0;
+        VisitorScore = 0;
+    }
+    private void ClearResult()
+    {
+        Scores.Clear();
+    }
+    private string TotalScore()
+    {
+        int won = Scores.Count(c=>c.Won);
+        int plus = Scores.Sum(c=>c.Points);
+        return won + " match(es) " + plus + " points";
+    }
+}

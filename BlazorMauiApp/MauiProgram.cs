@@ -1,5 +1,4 @@
-﻿using BlazorMauiApp.Data;
-using Microsoft.Extensions.Logging;
+﻿using Microsoft.Extensions.Logging;
 
 namespace BlazorMauiApp
 {
@@ -17,13 +16,10 @@ namespace BlazorMauiApp
 
             builder.Services.AddMauiBlazorWebView();
 
-#if DEBUG
-		builder.Services.AddBlazorWebViewDeveloperTools();
-		builder.Logging.AddDebug();
-#endif
-
-            builder.Services.AddSingleton<WeatherForecastService>();
-
+            #if DEBUG
+		        builder.Services.AddBlazorWebViewDeveloperTools();
+		        builder.Logging.AddDebug();
+            #endif
             return builder.Build();
         }
     }
