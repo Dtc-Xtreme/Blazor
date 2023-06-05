@@ -1,0 +1,21 @@
+﻿@page "/form"
+@using BlazorServerApp.Models;
+<h3>Form</h3>
+<EditForm Model="FormData" OnValidSubmit="@SubmitForm">
+    <DataAnnotationsValidator />
+
+    <InputText @bind-Value="FormData.Text" placeholder="Text" />
+    <InputNumber @bind-Value="FormData.Number" />
+    <button type="submit">Submit</button>
+
+    <ValidationSummary />
+</EditForm>
+
+@code {
+    FormDataModel FormData = new();
+
+    public void SubmitForm()
+    {
+        
+    }
+}
