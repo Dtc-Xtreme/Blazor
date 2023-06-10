@@ -1,121 +1,46 @@
-﻿@using Blazor.AppLogic.Services;
-@using Domain.Models;
-@inject ICalculatorService CalculatorService;
+﻿@page "/form"
+@using BlazorServerApp.Models;
 
-<EditForm Model="@Data" OnValidSubmit="@SubmitForm" class="row">
-    <ObjectGraphDataAnnotationsValidator />
+<EditForm Model="@Person" OnValidSubmit="@SubmitForm" class="row">
+    <DataAnnotationsValidator />
 
-    <div class="col-4">
-        <h5>Saw</h5>
-        <div>
+    <div class="col">
+        <h5>Person</h5>
+        <div class="my-3">
             <label for="">ID:</label>
-            <InputText @bind-Value="Data.Saw.ID" placeholder="ID"></InputText>
-            <ValidationMessage For="() => Data.Saw.ID" />
+            <InputNumber @bind-Value="Person.Id" placeholder="ID"></InputNumber>
+            <ValidationMessage For="() => Person.Id" />
         </div>
-        <div>
-            <label for="">Thickness:</label>
-            <InputNumber @bind-Value="Data.Saw.Thickness" placeholder="Thickness"></InputNumber>
-            <ValidationMessage For="() => Data.Saw.Thickness" />
+        <div class="my-3">
+            <label for="">Name:</label>
+            <InputText @bind-Value="Person.Name" placeholder="Name"></InputText>
+            <ValidationMessage For="() => Person.Name" />
+        </div>
+        <div class="my-3">
+            <label for="">Height:</label>
+            <InputNumber @bind-Value="Person.Height" placeholder="Length"></InputNumber>
+            <ValidationMessage For="() => Person.Height" />
+        </div>
+        <div class="my-3">
+            <label for="">Day of birth:</label>
+            <InputDate @bind-Value="Person.DayOfBirth" placeholder="Day of birth"></InputDate>
+            <ValidationMessage For="() => Person.DayOfBirth" />
         </div>
     </div>
 
-    <div class="col-4">
-        <h5>Plate</h5>
-        <div>
-            <label for="">Quantity:</label>
-            <InputNumber @bind-Value="Data.Plate.Quantity" placeholder="Quantity"></InputNumber>
-            <ValidationMessage For="() => Data.Plate.Quantity" />
-        </div>
-        <div>
-            <label for="">ID:</label>
-            <InputText @bind-Value="Data.Plate.ID" placeholder="ID"></InputText>
-            <ValidationMessage For="() => Data.Plate.ID" />
-        </div>
-        <div>
-            <label for="">Length:</label>
-            <InputNumber @bind-Value="Data.Plate.Length" placeholder="Length"></InputNumber>
-            <ValidationMessage For="() => Data.Plate.Length" />
-        </div>
-        <div>
-            <label for="">Width:</label>
-            <InputNumber @bind-Value="Data.Plate.Width" placeholder="Width"></InputNumber>
-            <ValidationMessage For="() => Data.Plate.Width" />
-        </div>
-        <div>
-            <label for="">Thickness:</label>
-            <InputNumber @bind-Value="Data.Plate.Thickness" placeholder="Thickness"></InputNumber>
-            <ValidationMessage For="() => Data.Plate.Thickness" />
-        </div>
-        <div>
-            <label for="">Trim:</label>
-            <InputNumber @bind-Value="Data.Plate.Trim" placeholder="Trim"></InputNumber>
-            <ValidationMessage For="() => Data.Plate.Trim" />
-        </div>
-        <div>
-            <label for="">Base:</label>
-            <InputCheckbox @bind-Value="Data.Plate.Base" placeholder="Base"></InputCheckbox>
-            <ValidationMessage For="() => Data.Plate.Base" />
-        </div>
-        <div>
-            <label for="">Veneer:</label>
-            <InputCheckbox @bind-Value="Data.Plate.Veneer" placeholder="Veneer"></InputCheckbox>
-            <ValidationMessage For="() => Data.Plate.Veneer"/>
-        </div>
-    </div>
-
-    <div class="col-4">
-        <h5>Product</h5>
-        <div>
-            <label for="">Quantity:</label>
-            <InputNumber @bind-Value="Data.Product.Quantity" placeholder="Quantity"></InputNumber>
-            <ValidationMessage For="() => Data.Product.Quantity" />
-        </div>
-        <div>
-            <label for="">ID:</label>
-            <InputText @bind-Value="Data.Product.ID" placeholder="ID"></InputText>
-            <ValidationMessage For="() => Data.Product.ID" />
-        </div>
-        <div>
-            <label for="">Length:</label>
-            <InputNumber @bind-Value="Data.Product.Length" placeholder="Length"></InputNumber>
-            <ValidationMessage For="() => Data.Product.Length" />
-        </div>
-        <div>
-            <label for="">Width:</label>
-            <InputNumber @bind-Value="Data.Product.Width" placeholder="Width"></InputNumber>
-            <ValidationMessage For="() => Data.Product.Width" />
-        </div>
-        <div>
-            <label for="">Thickness:</label>
-            <InputNumber @bind-Value="Data.Product.Thickness" placeholder="Thickness"></InputNumber>
-            <ValidationMessage For="() => Data.Product.Thickness" />
-        </div>
-    </div>
+    <button class="btn btn-primary my-3" type="submit">Submit</button>
     
-    <button class="btn btn-primary" type="submit">Submit</button>
-
+    <div class="p-3 bg-warning">
+        <h3>Validation Errors</h3>
+        <ValidationSummary />
+    </div>
 </EditForm>
 
-@if(Result != null && Result != "")
-{
-    <div class="mt-3">
-        <h4>Result:</h4>
-        @Result;
-    </div>
-}
 
 @code {
-    private FormData Data { get; set; } = new FormData
-    {
-        Saw = new Saw(),
-        Plate = new Plate(),
-        Product = new Product()
-    };
-
-    private string  Result { get; set; }
+    private Person Person { get; set; } = new Person();
 
     private void SubmitForm()
     {
-        Result = CalculatorService.Calculate();
     }
 }
