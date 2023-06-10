@@ -1,7 +1,7 @@
 ﻿@page "/form"
 @using BlazorServerApp.Models;
 
-<EditForm Model="@Person" OnValidSubmit="@SubmitForm" class="row">
+<EditForm Model="@Person" OnValidSubmit="@ValidSubmit" OnInvalidSubmit=@InvalidSubmit class="row">
     <DataAnnotationsValidator />
 
     <div class="col">
@@ -13,8 +13,8 @@
         </div>
         <div class="my-3">
             <label for="">Name:</label>
-            <InputText @bind-Value="Person.Name" placeholder="Name"></InputText>
-            <ValidationMessage For="() => Person.Name" />
+            <InputText @bind-Value="Person.Name" placeholder="Name" @oninput="OnChangeEvent"></InputText>
+           <ValidationMessage For="() => Person.Name"/>
         </div>
         <div class="my-3">
             <label for="">Height:</label>
@@ -30,17 +30,26 @@
 
     <button class="btn btn-primary my-3" type="submit">Submit</button>
     
-    <div class="p-3 bg-warning">
+    <div class="p-3 bg-dark text-white">
         <h3>Validation Errors</h3>
         <ValidationSummary />
     </div>
 </EditForm>
 
-
 @code {
     private Person Person { get; set; } = new Person();
 
-    private void SubmitForm()
+    private void Submit()
     {
+    }
+    private void ValidSubmit()
+    {
+    }
+    private void InvalidSubmit()
+    {
+    }
+    private void OnChangeEvent(ChangeEventArgs e)
+    {
+        
     }
 }
